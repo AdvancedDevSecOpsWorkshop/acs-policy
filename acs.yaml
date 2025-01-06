@@ -15,7 +15,7 @@
       when: username is defined and password is defined
 
     - name: Create cosign integration
-      url:
+      ansible.builtin.uri:
         uri: "https://{{ api_endpoint }}/v1/signatureintegrations"
         method: POST
         validate_certs: no
@@ -27,7 +27,7 @@
       register: cosign_reponse
 
     - name: Create image policy
-      url:
+      ansible.builtin.uri:
         uri: "https://{{ api_endpoint }}/v1/signatureintegrations"
         method: POST
         validate_certs: no
