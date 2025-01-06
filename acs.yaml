@@ -20,7 +20,7 @@
 
     - name: Create cosign integration
       ansible.builtin.uri:
-        uri: "https://{{ api_endpoint }}/v1/signatureintegrations"
+        url: "https://{{ api_endpoint }}/v1/signatureintegrations"
         method: POST
         validate_certs: no
         headers:
@@ -32,7 +32,7 @@
 
     - name: Create image policy
       ansible.builtin.uri:
-        uri: "https://{{ api_endpoint }}/v1/signatureintegrations"
+        url: "https://{{ api_endpoint }}/v1/signatureintegrations"
         method: POST
         validate_certs: no
         headers:
