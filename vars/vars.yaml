@@ -7,8 +7,7 @@ cosign_integration:
         -----BEGIN PUBLIC KEY-----
         MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEjWno6IupPFSRi9btNhFtMeS1iQbM
         gN6OWsfUdhfT5TCf23ESE3vfuMWtX9syvjmemuGpZ+/fRDOyqAbVnAGNpQ==
-        -----END PUBLIC
-        KEY-----
+        -----END PUBLIC KEY-----
   cosignCertificates: []
 
 image_signing_policy:
