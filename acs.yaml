@@ -32,7 +32,7 @@
 
     - name: Create image policy
       ansible.builtin.uri:
-        url: "https://{{ api_endpoint }}/v1/signatureintegrations"
+        url: "https://{{ api_endpoint }}/v1/policies"
         method: POST
         validate_certs: no
         headers:
