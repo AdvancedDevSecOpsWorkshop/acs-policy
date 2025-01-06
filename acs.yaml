@@ -1,5 +1,9 @@
 ---
 - hosts: localhost
+  gather_facts: no
+
+  vars:
+    ansible_remote_tmp: /runner/.ansible/tmp
 
   tasks:
     - include_vars: vars.yaml
