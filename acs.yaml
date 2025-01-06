@@ -27,7 +27,7 @@
           authorization: "{{ authorization }}"
         body_format: json
         body: "{{ cosign_integration }}"
-        status_code: [200]
+        status_code: [200,409]
       register: cosign_response
 
     - name: Create image policy
@@ -39,5 +39,5 @@
           authorization: "{{ authorization }}"
         body_format: json
         body: "{{ image_signing_policy }}"
-        status_code: [200]
+        status_code: [200,409]
       register: cosign_response
