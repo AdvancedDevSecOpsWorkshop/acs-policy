@@ -28,7 +28,7 @@
         body_format: json
         body: "{{ cosign_integration }}"
         status_code: [200]
-      register: cosign_reponse
+      register: cosign_response
 
     - name: Create image policy
       ansible.builtin.uri:
@@ -40,4 +40,4 @@
         body_format: json
         body: "{{ image_signing_policy }}"
         status_code: [200]
-      register: cosign_reponse
+      register: cosign_response
