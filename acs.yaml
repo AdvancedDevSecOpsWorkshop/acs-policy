@@ -28,7 +28,32 @@
         body_format: json
         body: "{{ cosign_integration }}"
         status_code: [200,409]
-      register: cosign_response
+
+    # Have to see if policy exists manually since it returns a 500 rather then 409
+    # for duplicated policies unlike signature integrations. Likely a bug IMHO
+    - name: Retrieve list of policies
+      ansible.builtin.uri:
+        url: "https://{{ api_endpoint }}/v1/policies"
+        method: GET
+        validate_certs: no
+        headers:
+          authorization: "{{ authorization }}"
+        status_code: [200]
+      register: policy_list
+
+    # - name: Output policy list result
+    #   debug:
+    #     msg: "{{ policy_list.json }}"
+
+    - name: Extract policy already exists
+      set_fact:
+        trusted_signature_policy: "{{ policy_list.json | community.general.json_query(policy_query) }}"
+      vars:
+        policy_query: "policies[?name=='Trusted Signature Policy']"
+
+    # - name: Output policy already exists
+    #   debug:
+    #     msg: "{{ trusted_signature_policy }}"
 
     - name: Create image policy
       ansible.builtin.uri:
@@ -39,5 +64,5 @@
           authorization: "{{ authorization }}"
         body_format: json
         body: "{{ image_signing_policy }}"
-        status_code: [200,409]
-      register: cosign_response
+        status_code: [200]
+      when: not trusted_signature_policy
