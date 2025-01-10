@@ -66,3 +66,14 @@
         body: "{{ image_signing_policy }}"
         status_code: [200]
       when: not trusted_signature_policy
+
+    - name: Setup image integration with Quay
+      ansible.builtin.uri:
+        url: "https://{{ api_endpoint }}/v1/imageintegrations"
+        method: POST
+        validate_certs: no
+        headers:
+          authorization: "{{ authorization }}"
+        body_format: json
+        body: "{{ quay_image_integration }}"
+        status_code: [200, 400]
