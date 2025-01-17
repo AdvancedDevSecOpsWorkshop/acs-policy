@@ -77,3 +77,8 @@
         body_format: json
         body: "{{ quay_image_integration }}"
         status_code: [200, 400]
+      register: integration_result
+
+    - name: Output integration result
+      debug:
+        msg: "{{ integration_result }}"
