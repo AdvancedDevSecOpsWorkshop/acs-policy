@@ -23,6 +23,7 @@
     - name: Cosign integration
       herve4m.rhacs_configuration.rhacs_signature:
         name: cosign
+        skip_validate_certs: true
         cosign_pub_keys:
           - name: cosign.pub
             key: "{{ lookup('ansible.builtin.file', 'cosign.pub') }}"
@@ -34,6 +35,7 @@
 
     - name: Trusted Signature Policy
       herve4m.rhacs_configuration.rhacs_policy:
+        skip_validate_certs: true
         policy: Trusted Signature Policy
         state: present
         rhacs_host: "{{ api_endpoint }}"
@@ -82,6 +84,7 @@
 
     - name: Configure Quay Registry Integration
       herve4m.rhacs_configuration.rhacs_image_integration:
+        skip_validate_certs: true
         name: Quay
         type: quay
         run_test: false
