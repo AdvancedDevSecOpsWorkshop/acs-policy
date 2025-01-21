@@ -107,13 +107,46 @@
         data:
           name: Fixable Severity at least Important
           description: Alert on deployments with fixable vulnerabilities with a Severity Rating at least Important
-          severity: HIGH_SEVERITY
+          rationale: |-
+            Known vulnerabilities make it easier for adversaries to exploit your application.
+            You can fix these high-severity vulnerabilities by updating to a newer version of
+            the affected component(s).
+          remediation: |-
+            Use your package manager to update to a fixed version in future builds
+            or speak with your security team to mitigate the vulnerabilities.
           disabled: true
+          categories:
+          - Vulnerability Management
           lifecycleStages:
           - BUILD
           - DEPLOY
-          notifiers: []
-          lastUpdated: '2025-01-20T21:28:01.723203330Z'
           eventSource: NOT_APPLICABLE
+          exclusions: []
+          scope: []
+          severity: HIGH_SEVERITY
+          enforcementActions:
+          - FAIL_BUILD_ENFORCEMENT
+          notifiers: []
+          lastUpdated: '2025-01-21T18:36:42.078780032Z'
+          SORTName: Fixable Severity at least Important
+          SORTLifecycleStage: BUILD,DEPLOY
+          SORTEnforcement: true
+          policyVersion: '1.1'
+          policySections:
+          - sectionName: ''
+            policyGroups:
+            - fieldName: Fixed By
+              booleanOperator: OR
+              negate: false
+              values:
+              - value: ".*"
+            - fieldName: Severity
+              booleanOperator: OR
+              negate: false
+              values:
+              - value: ">=IMPORTANT"
+          mitreAttackVectors: []
+          criteriaLocked: true
+          mitreVectorsLocked: true
           isDefault: true
           source: IMPERATIVE
