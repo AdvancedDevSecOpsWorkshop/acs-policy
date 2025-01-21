@@ -95,3 +95,25 @@
         rhacs_host: "{{ api_endpoint }}"
         rhacs_username: admin
         rhacs_password: "{{ password }}"
+
+    - name: Disable Fixable Important Severity Policy
+      herve4m.rhacs_configuration.rhacs_policy:
+        skip_validate_certs: true
+        policy: Fixable Severity at least Important
+        state: present
+        rhacs_host: "{{ api_endpoint }}"
+        rhacs_username: admin
+        rhacs_password: "{{ password }}"
+        data:
+          name: Fixable Severity at least Important
+          description: Alert on deployments with fixable vulnerabilities with a Severity Rating at least Important
+          severity: HIGH_SEVERITY
+          disabled: true
+          lifecycleStages:
+          - BUILD
+          - DEPLOY
+          notifiers: []
+          lastUpdated: '2025-01-20T21:28:01.723203330Z'
+          eventSource: NOT_APPLICABLE
+          isDefault: true
+          source: IMPERATIVE
