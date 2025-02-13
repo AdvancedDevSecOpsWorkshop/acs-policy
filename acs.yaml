@@ -56,10 +56,7 @@
           eventSource: NOT_APPLICABLE
           exclusions: []
           severity: HIGH_SEVERITY
-          enforcementActions:
-          - FAIL_BUILD_ENFORCEMENT
-          - SCALE_TO_ZERO_ENFORCEMENT
-          - UNSATISFIABLE_NODE_CONSTRAINT_ENFORCEMENT
+          enforcementActions: []
           notifiers: []
           scope:
           - cluster: "{{clusters.json.clusters[0].id}}"
