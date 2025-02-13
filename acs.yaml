@@ -63,7 +63,9 @@
           notifiers: []
           scope:
           - cluster: "{{clusters.json.clusters[0].id}}"
-            namespace: user.*-dev,user.*-stage,user.*-prod
+            namespace: user.*-dev
+          - cluster: "{{clusters.json.clusters[0].id}}"
+            namespace: user.*-prod
           SORTName: Trusted Signature Policy
           SORTLifecycleStage: BUILD,DEPLOY
           SORTEnforcement: true
